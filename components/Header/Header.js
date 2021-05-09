@@ -1,8 +1,9 @@
+import { DrawerActions } from '@react-navigation/routers';
 import React from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
-const Header = () => {
+const Header = ({navigation}) => {
   return (
     <View style={styles.header}>
         <TouchableOpacity>
@@ -11,7 +12,7 @@ const Header = () => {
                 style={styles.logo}
             />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
             <Image
                 source={require('../../assets/images/menu.png')}
                 style={styles.menu}

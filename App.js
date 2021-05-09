@@ -1,24 +1,30 @@
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import CarList from './components/CarList/CarList';
-import Header from './components/Header/Header';
+import { Dimensions, StyleSheet, View } from 'react-native';
+import Drawer from './components/Drawer/Drawer';
+import HomeScreen from './Screens/HomeScreen';
+
+const DrawerNavigator = createDrawerNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-        <Header />
-        <CarList />
-      <StatusBar style="light" />
-    </View>
+    <NavigationContainer>
+      <DrawerNavigator.Navigator
+        drawerPosition="right"
+        drawerContent={(props) => <Drawer {...props} />}
+        drawerStyle={Dimensions.get('window').width * 0.75}
+      >
+        <DrawerNavigator.Screen name="Home" component={HomeScreen} />
+      </DrawerNavigator.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  container:{
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    
+  }
+})

@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     header: {
         position: "absolute",
-        top: "5%",
+        top: "0%",
         width: "100%",
         flexDirection: "row",
         alignItems: "center",
